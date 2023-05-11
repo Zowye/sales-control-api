@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registros de Parcelamento</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .btn-custom {
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+
+    .btn-custom2 {
+      background-color: #70d473;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+
+
+
+    .btn-custom3 {
+      background-color: #b8cfb9;
+      color: #fff;
+      border: None;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+
+
+    .btn-custom:hover {
+      background-color: #2a622c;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    function apagarRegistros() {
+      // Obtém todos os checkboxes selecionados
+      var checkboxes = document.getElementsByName("registro_id");
+      var ids = [];
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          ids.push(checkboxes[i].value);
+        }
+      }
+
+      // Envia a solicitação HTTP para apagar os registros
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/delete", true);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.onload = function () {
+        // Recarrega a página após a exclusão
+        window.location.reload();
+      };
+      xhr.send(JSON.stringify(ids));
+    }
+
+  </script>
+
+
+
+
+  <h1>Registros de Parcelamento</h1>
+
+
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Data</th>
+      <th>Client Name</th>
+      <th>Número de Parcelas</th>
+      <th>Valor</th>
+      <th>Adquirente</th>
+      <th>MDR</th>
+      <th>OBS</th>
+    </tr>
+    {% for registro in registros %}
+    <tr>
+      <td>{{ registro[0] }}</td>
+      <td>{{ registro[1] }}</td>
+      <td>{{ registro[2] }}</td>
+      <td>{{ registro[3] }}</td>
+      <td>{{ registro[4] }}</td>
+      <td>{{ registro[5] }}</td>
+      <td>{{ registro[6] }}</td>
+      <td>{{ registro[7] }}</td>
+      <td>{{ registro[8] }}</td>
+      <td>{{ registro[9] }}</td>
+      <td><input type="checkbox" name="registro_id" value="{{ registro[0] }}"></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <button class="btn-custom3" onclick="apagarRegistros()">Apagar Registros Selecionados</button>
+  </br>
+  </br>
+  <a class="btn-custom2" href="/get_values" class="btn btn-primary mb-3">Ver Parcelas por Mês</a>
+  <a class="btn-custom" href="/add" class="btn btn-primary mb-3">Adicionar</a>
+</body>
+
+</html>

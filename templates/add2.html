@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pagamentos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        form {
+
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+
+        .return-home {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="return-home">
+        <a href="/" class="button">Retornar à página inicial</a>
+    </div>
+
+
+    <form action="/insert_data" method="post">
+        <label for="date">Data:</label>
+        <input type="date" name="date" id="date" required>
+        <label for="client_name">Nome do cliente:</label>
+        <input type="text" name="client_name" id="client_name" required>
+        <label for="installments_number">Número de parcelas:</label>
+        <input type="number" name="installments_number" id="installments_number" required>
+        <label for="value">Valor:</label>
+        <input type="number" name="value" id="value" required>
+        <label for="payment_type">Tipo de pagamento:</label>
+        <select name="payment_type" id="payment_type" required>
+            <option value="Credit">Crédito</option>
+            <option value="Debit">Débito</option>
+        </select>
+        <label for="mdr">MDR:</label>
+        <input type="number" name="mdr" id="mdr" required>
+        <label for="CMA">Adquirente:</label>
+        <input type="text" name="CMA" id="CMA" required>
+        <label for="observation">Observação:</label>
+        <input type="text" name="observation" id="observation">
+        <input type="submit" value="Inserir">
+    </form>
+</body>
+
+</html>

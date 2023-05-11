@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table</title>
+    <style>
+
+table {
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+
+
+.btn-custom {
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding: 12px 24px;
+      border:None;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>My Table</h1>
+    {{ table|safe }}
+    </br>
+    <a class="btn-custom" href="/">Back</a>
+  </body>
+</html>
